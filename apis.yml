@@ -1,13 +1,26 @@
+aid: authors-md
 name: AUTHORS.md
-description: File listing the original creators and primary authors of a project,
-  often required by certain open-source licenses.
-url: ''
+description: >-
+  AUTHORS.md is a file listing the original creators and primary authors of a
+  project, often required by certain open-source licenses. It provides
+  attribution for contributors to open-source and collaborative software
+  projects.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Documentation
-- Attribution
-- Open Source
-- Repository
-created: '2025'
-modified: '2025'
+  - Documentation
+  - Attribution
+  - Open Source
+  - Repository
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/authors-md/refs/heads/main/apis.yml
+created: '2025-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 apis: []
-common: []
+common:
+  - type: GitHub Organization
+    url: https://github.com/api-evangelist
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
