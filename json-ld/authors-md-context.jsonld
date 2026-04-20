@@ -1,0 +1,114 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "authors": "https://authors-md.org/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "spdx": "http://spdx.org/rdf/terms#",
+
+    "AllContributorsConfig": "authors:AllContributorsConfig",
+    "Contributor": "authors:Contributor",
+    "AuthorEntry": "authors:AuthorEntry",
+
+    "projectName": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "projectOwner": {
+      "@id": "authors:projectOwner",
+      "@type": "xsd:string"
+    },
+    "repoType": {
+      "@id": "authors:repoType",
+      "@type": "xsd:string"
+    },
+    "repoHost": {
+      "@id": "authors:repoHost",
+      "@type": "@id"
+    },
+    "files": {
+      "@id": "authors:files",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "imageSize": {
+      "@id": "authors:imageSize",
+      "@type": "xsd:integer"
+    },
+    "commit": {
+      "@id": "authors:commit",
+      "@type": "xsd:boolean"
+    },
+    "commitConvention": {
+      "@id": "authors:commitConvention",
+      "@type": "xsd:string"
+    },
+    "contributorsPerLine": {
+      "@id": "authors:contributorsPerLine",
+      "@type": "xsd:integer"
+    },
+    "contributors": {
+      "@id": "authors:contributors",
+      "@container": "@set"
+    },
+    "login": {
+      "@id": "authors:login",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "avatar_url": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "profile": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "contributions": {
+      "@id": "authors:contributions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "organization": {
+      "@id": "schema:affiliation",
+      "@type": "xsd:string"
+    },
+    "role": {
+      "@id": "authors:role",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "identifier": {
+      "@id": "dcterms:identifier",
+      "@type": "xsd:string"
+    },
+    "license": {
+      "@id": "spdx:license",
+      "@type": "xsd:string"
+    },
+    "copyrightHolder": {
+      "@id": "dcterms:rightsHolder",
+      "@type": "xsd:string"
+    },
+    "copyrightYear": {
+      "@id": "dcterms:dateCopyrighted",
+      "@type": "xsd:integer"
+    }
+  }
+}

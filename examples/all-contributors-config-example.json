@@ -1,0 +1,41 @@
+{
+  "projectName": "my-open-source-project",
+  "projectOwner": "example-org",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": ["README.md", "docs/CONTRIBUTORS.md"],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "jsmith",
+      "name": "Jane Smith",
+      "avatar_url": "https://avatars.githubusercontent.com/u/100001?v=4",
+      "profile": "https://github.com/jsmith",
+      "contributions": ["code", "doc", "review", "maintenance"]
+    },
+    {
+      "login": "bobdoe",
+      "name": "Bob Doe",
+      "avatar_url": "https://avatars.githubusercontent.com/u/100002?v=4",
+      "profile": "https://bobdoe.example.com",
+      "contributions": ["code", "test", "bug"]
+    },
+    {
+      "login": "alice42",
+      "name": "Alice Johnson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/100003?v=4",
+      "profile": "https://github.com/alice42",
+      "contributions": ["doc", "translation", "tutorial"]
+    },
+    {
+      "login": "carlos-dev",
+      "name": "Carlos Martinez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/100004?v=4",
+      "profile": "https://github.com/carlos-dev",
+      "contributions": ["infra", "platform", "security"]
+    }
+  ]
+}

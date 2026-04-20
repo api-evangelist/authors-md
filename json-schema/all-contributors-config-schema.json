@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/authors-md/refs/heads/main/json-schema/all-contributors-config-schema.json",
+  "title": "AllContributorsConfig",
+  "description": "Schema for the .all-contributorsrc configuration file used by the All Contributors specification and bot to manage open-source project contributor attribution.",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "Name of the project repository.",
+      "example": "all-contributors"
+    },
+    "projectOwner": {
+      "type": "string",
+      "description": "GitHub username or organization that owns the project.",
+      "example": "all-contributors"
+    },
+    "repoType": {
+      "type": "string",
+      "description": "Type of repository hosting service.",
+      "enum": ["github", "gitlab", "bitbucket"],
+      "example": "github"
+    },
+    "repoHost": {
+      "type": "string",
+      "description": "Hostname of the repository hosting service.",
+      "example": "https://github.com"
+    },
+    "files": {
+      "type": "array",
+      "description": "List of files to update with contributor tables.",
+      "items": {
+        "type": "string"
+      },
+      "example": ["README.md"]
+    },
+    "imageSize": {
+      "type": "integer",
+      "description": "Size in pixels for contributor avatar images.",
+      "example": 100
+    },
+    "commit": {
+      "type": "boolean",
+      "description": "Whether to automatically commit changes when contributors are added.",
+      "example": false
+    },
+    "commitConvention": {
+      "type": "string",
+      "description": "Commit message convention to follow.",
+      "enum": ["none", "angular", "atom", "ember", "eslint", "jshint", "gitmoji"],
+      "example": "none"
+    },
+    "contributorsPerLine": {
+      "type": "integer",
+      "description": "Maximum number of contributors to display per line in the table.",
+      "example": 7
+    },
+    "badgeTemplate": {
+      "type": "string",
+      "description": "Custom template for the contributors badge markdown.",
+      "example": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors-)"
+    },
+    "contributorTemplate": {
+      "type": "string",
+      "description": "Custom template for individual contributor entries in the table.",
+      "example": "<a href=\"<%= contributor.profile %>\"><img src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>"
+    },
+    "types": {
+      "type": "object",
+      "description": "Custom contribution type definitions extending the default types.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "Emoji symbol for this contribution type."
+          },
+          "description": {
+            "type": "string",
+            "description": "Human-readable description of this contribution type."
+          },
+          "link": {
+            "type": "string",
+            "description": "URL template for linking this contribution type."
+          }
+        }
+      }
+    },
+    "contributors": {
+      "type": "array",
+      "description": "List of contributors to the project.",
+      "items": {
+        "$ref": "#/$defs/Contributor"
+      }
+    }
+  },
+  "required": ["projectName", "projectOwner", "contributors"],
+  "$defs": {
+    "Contributor": {
+      "type": "object",
+      "title": "Contributor",
+      "description": "An individual contributor to the project with their profile information and contribution types.",
+      "properties": {
+        "login": {
+          "type": "string",
+          "description": "GitHub/GitLab username of the contributor.",
+          "example": "jsmith"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full display name of the contributor.",
+          "example": "Jane Smith"
+        },
+        "avatar_url": {
+          "type": "string",
+          "description": "URL to the contributor's avatar image.",
+          "format": "uri",
+          "example": "https://avatars.githubusercontent.com/u/12345?v=4"
+        },
+        "profile": {
+          "type": "string",
+          "description": "URL to the contributor's public profile page.",
+          "format": "uri",
+          "example": "https://github.com/jsmith"
+        },
+        "contributions": {
+          "type": "array",
+          "description": "List of contribution types made by this contributor.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "audio",
+              "a11y",
+              "bug",
+              "blog",
+              "business",
+              "code",
+              "content",
+              "data",
+              "doc",
+              "design",
+              "example",
+              "eventOrganizing",
+              "financial",
+              "fundingFinding",
+              "ideas",
+              "infra",
+              "maintenance",
+              "mentoring",
+              "platform",
+              "plugin",
+              "projectManagement",
+              "promotion",
+              "question",
+              "research",
+              "review",
+              "security",
+              "talk",
+              "test",
+              "tool",
+              "translation",
+              "tutorial",
+              "userTesting",
+              "video"
+            ]
+          },
+          "example": ["code", "doc", "review"]
+        }
+      },
+      "required": ["login", "name", "contributions"]
+    },
+    "AuthorEntry": {
+      "type": "object",
+      "title": "AuthorEntry",
+      "description": "A structured entry representing an author or contributor in an AUTHORS.md file.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the author.",
+          "example": "Jane Smith"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the author.",
+          "format": "email",
+          "example": "jsmith@example.com"
+        },
+        "url": {
+          "type": "string",
+          "description": "Personal website or profile URL of the author.",
+          "format": "uri",
+          "example": "https://jsmith.example.com"
+        },
+        "contributions": {
+          "type": "string",
+          "description": "Description of which files or portions of the project the author contributed.",
+          "example": "Initial implementation of the core parser module and authentication system."
+        },
+        "organization": {
+          "type": "string",
+          "description": "Organization or employer affiliation of the author.",
+          "example": "Example Corp"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the author in the project.",
+          "enum": ["author", "contributor", "maintainer", "emeritus"],
+          "example": "author"
+        }
+      },
+      "required": ["name"]
+    }
+  }
+}

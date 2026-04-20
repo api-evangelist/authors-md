@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/authors-md/refs/heads/main/json-structure/all-contributors-config-structure.json",
+  "name": "AllContributorsConfig",
+  "description": "Schema for the .all-contributorsrc configuration file used by the All Contributors specification and bot to manage open-source project contributor attribution.",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "Name of the project repository."
+    },
+    "projectOwner": {
+      "type": "string",
+      "description": "GitHub username or organization that owns the project."
+    },
+    "repoType": {
+      "type": "string",
+      "description": "Type of repository hosting service.",
+      "enum": ["github", "gitlab", "bitbucket"]
+    },
+    "repoHost": {
+      "type": "string",
+      "description": "Hostname of the repository hosting service."
+    },
+    "files": {
+      "type": "array",
+      "description": "List of files to update with contributor tables.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "imageSize": {
+      "type": "int32",
+      "description": "Size in pixels for contributor avatar images."
+    },
+    "commit": {
+      "type": "boolean",
+      "description": "Whether to automatically commit changes when contributors are added."
+    },
+    "commitConvention": {
+      "type": "string",
+      "description": "Commit message convention to follow.",
+      "enum": ["none", "angular", "atom", "ember", "eslint", "jshint", "gitmoji"]
+    },
+    "contributorsPerLine": {
+      "type": "int32",
+      "description": "Maximum number of contributors to display per line in the table."
+    },
+    "contributors": {
+      "type": "array",
+      "description": "List of contributors to the project.",
+      "items": {
+        "$ref": "#/definitions/Contributor"
+      }
+    }
+  },
+  "required": ["projectName", "projectOwner", "contributors"],
+  "definitions": {
+    "Contributor": {
+      "name": "Contributor",
+      "type": "object",
+      "description": "An individual contributor to the project with their profile information and contribution types.",
+      "properties": {
+        "login": {
+          "type": "string",
+          "description": "GitHub/GitLab username of the contributor."
+        },
+        "name": {
+          "type": "string",
+          "description": "Full display name of the contributor."
+        },
+        "avatar_url": {
+          "type": "uri",
+          "description": "URL to the contributor's avatar image."
+        },
+        "profile": {
+          "type": "uri",
+          "description": "URL to the contributor's public profile page."
+        },
+        "contributions": {
+          "type": "array",
+          "description": "List of contribution types made by this contributor.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["login", "name", "contributions"]
+    },
+    "AuthorEntry": {
+      "name": "AuthorEntry",
+      "type": "object",
+      "description": "A structured entry representing an author or contributor in an AUTHORS.md file.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the author."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the author."
+        },
+        "url": {
+          "type": "uri",
+          "description": "Personal website or profile URL of the author."
+        },
+        "contributions": {
+          "type": "string",
+          "description": "Description of which files or portions of the project the author contributed."
+        },
+        "organization": {
+          "type": "string",
+          "description": "Organization or employer affiliation of the author."
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the author in the project.",
+          "enum": ["author", "contributor", "maintainer", "emeritus"]
+        }
+      },
+      "required": ["name"]
+    }
+  }
+}

@@ -1,0 +1,229 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: AUTHORS.md
+  description: >-
+    Unified vocabulary for the AUTHORS.md file format standard, covering the
+    domain of contributor attribution, open-source authorship documentation,
+    license compliance, and contributor management tooling.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+
+operational:
+  apis:
+    - name: All Contributors Bot API
+      namespace: all-contributors
+      version: "1.0"
+      baseUrl: https://api.github.com/repos/{owner}/{repo}
+      status: active
+      description: >-
+        GitHub-integrated bot API for automating contributor recognition in
+        open-source projects using the All Contributors specification.
+
+  resources:
+    - name: contributors
+      description: Individual contributors with their profile and contribution metadata
+      apis: [all-contributors]
+      actions: [list, add, update, remove]
+    - name: config
+      description: The .all-contributorsrc configuration file controlling bot behavior
+      apis: [all-contributors]
+      actions: [get, update]
+    - name: authors
+      description: Original authors and primary creators listed in AUTHORS.md files
+      apis: []
+      actions: [list, document]
+    - name: contribution-types
+      description: >-
+        Taxonomy of recognized contribution types including code, documentation,
+        design, translation, testing, and community contributions
+      apis: [all-contributors]
+      actions: [list]
+
+  actions:
+    - name: add
+      description: Add a new contributor to the project attribution
+      httpMethods: [POST]
+      pattern: write
+    - name: list
+      description: List all contributors or authors
+      httpMethods: [GET]
+      pattern: read
+    - name: get
+      description: Retrieve a single contributor or configuration record
+      httpMethods: [GET]
+      pattern: read
+    - name: update
+      description: Update contributor information or configuration
+      httpMethods: [PUT, PATCH]
+      pattern: write
+    - name: remove
+      description: Remove a contributor entry
+      httpMethods: [DELETE]
+      pattern: destructive
+    - name: document
+      description: Document author contributions in human-readable format
+      httpMethods: []
+      pattern: write
+
+  schemas:
+    core:
+      - name: AllContributorsConfig
+        description: Root configuration schema for .all-contributorsrc files
+        key_properties: [projectName, projectOwner, repoType, contributors]
+      - name: Contributor
+        description: Individual contributor profile with contribution types
+        key_properties: [login, name, avatar_url, profile, contributions]
+      - name: AuthorEntry
+        description: Structured author entry for AUTHORS.md files
+        key_properties: [name, email, url, contributions, role]
+
+  parameters:
+    identifiers:
+      - name: login
+        description: GitHub/GitLab username uniquely identifying a contributor
+        type: string
+      - name: projectOwner
+        description: Repository owner organization or username
+        type: string
+      - name: projectName
+        description: Repository name within the owner's namespace
+        type: string
+    filters:
+      - name: repoType
+        description: Filter by repository hosting platform type
+        type: string
+        values: [github, gitlab, bitbucket]
+      - name: role
+        description: Filter authors by their role in the project
+        type: string
+        values: [author, contributor, maintainer, emeritus]
+
+  enums:
+    contributionTypes:
+      - audio
+      - a11y
+      - bug
+      - blog
+      - business
+      - code
+      - content
+      - data
+      - doc
+      - design
+      - example
+      - eventOrganizing
+      - financial
+      - fundingFinding
+      - ideas
+      - infra
+      - maintenance
+      - mentoring
+      - platform
+      - plugin
+      - projectManagement
+      - promotion
+      - question
+      - research
+      - review
+      - security
+      - talk
+      - test
+      - tool
+      - translation
+      - tutorial
+      - userTesting
+      - video
+    authorRoles:
+      - author
+      - contributor
+      - maintainer
+      - emeritus
+    repoTypes:
+      - github
+      - gitlab
+      - bitbucket
+    commitConventions:
+      - none
+      - angular
+      - atom
+      - ember
+      - eslint
+      - jshint
+      - gitmoji
+
+  authentication:
+    schemes:
+      - name: GitHub App Token
+        type: bearer
+        description: >-
+          The All Contributors bot uses a GitHub App installation token to
+          authenticate API requests for updating repository files.
+
+capability:
+  workflows:
+    - name: Contributor Attribution Management
+      description: >-
+        End-to-end workflow for managing contributor recognition in open-source
+        projects from initial setup through automated attribution updates.
+      apisUsed: [all-contributors]
+      tools: 4
+      personas: [Open Source Maintainer]
+      domains: [Contributor Management, License Compliance]
+
+  personas:
+    - id: open-source-maintainer
+      name: Open Source Maintainer
+      description: >-
+        A developer responsible for managing an open-source project who needs
+        to track, recognize, and document contributor attributions.
+      workflows: [Contributor Attribution Management]
+    - id: legal-compliance-officer
+      name: Legal Compliance Officer
+      description: >-
+        A person responsible for ensuring open-source license compliance,
+        including proper attribution in AUTHORS files and copyright notices.
+      workflows: [Contributor Attribution Management]
+    - id: open-source-contributor
+      name: Open Source Contributor
+      description: >-
+        A developer who contributes to open-source projects and wants to be
+        properly recognized for their various types of contributions.
+      workflows: [Contributor Attribution Management]
+
+  domains:
+    - name: Contributor Management
+      description: >-
+        Managing the lifecycle of contributor recognition from first contribution
+        through ongoing maintenance of attribution records.
+      resources: [contributors, authors]
+    - name: License Compliance
+      description: >-
+        Ensuring proper attribution and documentation to satisfy open-source
+        license requirements for GPL, Apache, and other licenses.
+      resources: [authors, contribution-types]
+    - name: Community Recognition
+      description: >-
+        Publicly acknowledging diverse contributions beyond code to build
+        inclusive open-source communities.
+      resources: [contributors, contribution-types]
+
+  namespaces:
+    - type: consumed
+      name: all-contributors
+      baseUri: https://allcontributors.org
+  binds: []
+
+crossReference:
+  - resource: contributors
+    operations: [list, add, update, remove]
+    workflows: [Contributor Attribution Management]
+    personas: [Open Source Maintainer, Open Source Contributor]
+  - resource: authors
+    operations: [list, document]
+    workflows: [Contributor Attribution Management]
+    personas: [Open Source Maintainer, Legal Compliance Officer]
+  - resource: contribution-types
+    operations: [list]
+    workflows: [Contributor Attribution Management]
+    personas: [Open Source Maintainer, Open Source Contributor]
