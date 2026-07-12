@@ -57,6 +57,8 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/authors-md/refs/heads/main/json-schema/all-contributors-config-schema.json
 
 common:
+  - type: DomainSecurity
+    url: security/authors-md-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/api-evangelist
   - type: GitHubRepository
