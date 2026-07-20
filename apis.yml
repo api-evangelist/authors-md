@@ -1,5 +1,6 @@
 aid: authors-md
 name: AUTHORS.md
+kind: topic
 description: >-
   AUTHORS.md is a file format standard used in open-source and collaborative
   software projects to list the original creators, primary authors, and
