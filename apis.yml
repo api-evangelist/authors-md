@@ -70,6 +70,17 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/authors-md/refs/heads/main/json-schema/all-contributors-config-schema.json
 
 common:
+  - type: IssueTracker
+    url: https://github.com/all-contributors/all-contributors/issues
+  - type: Releases
+    url: https://github.com/all-contributors/all-contributors/releases
+  - type: CodeOfConduct
+    url: https://github.com/all-contributors/allcontributors.org/blob/main/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/all-contributors/allcontributors.org/blob/main/CONTRIBUTING.md
+  - type: License
+    name: MIT
+    url: https://github.com/all-contributors/all-contributors/blob/main/LICENSE
   - type: DomainSecurity
     url: security/authors-md-domain-security.yml
   - type: GitHubOrganization
