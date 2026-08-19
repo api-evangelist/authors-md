@@ -37,7 +37,7 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/authors-md/refs/heads/main/apis.yml
 created: '2025-01-01'
 modified: '2026-04-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: authors-md-all-contributors
     name: All Contributors API
