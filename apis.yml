@@ -36,7 +36,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/authors-md
 tags:
 - Attribution
 - Documentation
-- Open-Source
+- Open Source
 - Repository
 - File Format
 - Contributor Management
@@ -51,6 +51,7 @@ tags_raw:
 - Contributor Management
 - License Compliance
 - Standard
+- Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/authors-md/refs/heads/main/apis.yml
 created: '2025-01-01'
 modified: '2026-04-19'
@@ -67,7 +68,7 @@ apis:
   tags:
   - Contributors
   - Attribution
-  - Open-Source
+  - Open Source
   - Bot
   - GitHub
   tags_raw:
@@ -76,6 +77,7 @@ apis:
   - Open Source
   - Bot
   - GitHub
+  - Open-Source
   properties:
   - type: Documentation
     url: https://allcontributors.org/docs/en/overview
